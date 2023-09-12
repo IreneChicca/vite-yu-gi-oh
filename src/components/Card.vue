@@ -16,10 +16,15 @@ export default {
 };
 </script>
 <template>
-  <div class="ccard m-3 col-2">
+  <div class="ccard m-2 col-2">
     <img :src="buildImgPath(card.card_images[0].image_url)" alt="" />
-    <p>{{ card.name }}</p>
+    <h6 class="text-uppercase text-white p-3">{{ card.name }}</h6>
     <p>{{ card.type }}</p>
   </div>
 </template>
-<style></style>
+<style>
+.ccard {
+  background-color: #d48f38;
+  text-align: center;
+}
+</style>
