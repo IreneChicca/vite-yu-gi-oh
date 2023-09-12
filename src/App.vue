@@ -14,6 +14,7 @@ export default {
 
 <template>
   <h1>{{ title }}</h1>
+  <AppContent></AppContent>
 </template>
 
 <style lang="scss">
