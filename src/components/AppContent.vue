@@ -18,12 +18,6 @@ export default {
           console.log(this.cards);
         });
     },
-
-    buildImgPath(imgName) {
-      const imgUrl = new URL(imgName);
-      return imgUrl.href;
-      alert(imgUrl);
-    },
   },
 
   components: { Card },
@@ -35,13 +29,8 @@ export default {
 </script>
 <template>
   <div class="content p-5">
-    <div class="container">
-      <div v-for="card in cards">
-        <p>{{ card.name }}</p>
-        <p>{{ card.type }}</p>
-
-        <img :src="buildImgPath(card.card_images[0].image_url)" alt="" />
-      </div>
+    <div class="container d-flex flex-wrap justify-content-evenly p-3">
+      <Card v-for="(card, i) in cards" :key="i" :card="card"></Card>
     </div>
   </div>
 </template>
