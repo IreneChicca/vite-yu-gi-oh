@@ -4,7 +4,7 @@ import AppContent from "./components/AppContent.vue";
 export default {
   data() {
     return {
-      title: "ok",
+      title: "Yu-gi-oh API",
     };
   },
 
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <h1 class="text-center border p-3 m-0">{{ title }}</h1>
   <AppContent></AppContent>
 </template>
 
