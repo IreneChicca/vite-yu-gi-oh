@@ -1,11 +1,13 @@
 <script>
 import axios from "axios";
 import Card from "./Card.vue";
+import BaseSelect from "./BaseSelect.vue";
 
 export default {
   data() {
     return {
       cards: [],
+      archetypes: [],
     };
   },
 
@@ -15,7 +17,19 @@ export default {
         .get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0")
         .then((response) => {
           this.cards = response.data.data;
-          console.log(this.cards);
+        });
+    },
+
+    // creo metodo che richiama da API gli archetipi
+    fetchArchetype() {
+      axios
+        .get("https://db.ygoprodeck.com/api/v7/archetypes.php")
+        .then((risp) => {
+          const arrayLength = risp.data.length;
+
+          for (let i = 1; i < arrayLength; i++) {
+            this.archetypes = risp.data[i].archetype_name;
+          }
         });
     },
   },
@@ -24,10 +38,13 @@ export default {
 
   created() {
     this.fetchCards();
+    this.fetchArchetype();
   },
 };
 </script>
 <template>
+  <div></div>
+
   <div class="content p-5">
     <div class="container d-flex flex-wrap justify-content-evenly p-3">
       <Card v-for="(card, i) in cards" :key="i" :card="card"></Card>

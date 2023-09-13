@@ -1,6 +1,5 @@
 <script>
 import AppContent from "./components/AppContent.vue";
-import BaseSelect from "./components/BaseSelect.vue";
 
 export default {
   data() {
@@ -10,6 +9,11 @@ export default {
   },
 
   components: { AppContent, BaseSelect },
+  methods: {
+    selectArchetype() {
+      console.log("ok");
+    },
+  },
 };
 </script>
 
@@ -17,7 +21,7 @@ export default {
   <h1 class="text-center border p-3 m-0">{{ title }}</h1>
 
   <div class="container p-4">
-    <BaseSelect />
+    <!-- <BaseSelect @selected-new-archetype="selectArchetype" /> -->
   </div>
   <AppContent></AppContent>
 </template>
