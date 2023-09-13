@@ -28,13 +28,13 @@ export default {
           const arrayLength = risp.data.length;
 
           for (let i = 1; i < arrayLength; i++) {
-            this.archetypes = risp.data[i].archetype_name;
+            this.archetypes.push(risp.data[i].archetype_name);
           }
         });
     },
   },
 
-  components: { Card },
+  components: { Card, BaseSelect },
 
   created() {
     this.fetchCards();
@@ -43,7 +43,9 @@ export default {
 };
 </script>
 <template>
-  <div></div>
+  <div class="container p-4">
+    <BaseSelect :arch="this.archetypes" class="w-25" />
+  </div>
 
   <div class="content p-5">
     <div class="container d-flex flex-wrap justify-content-evenly p-3">

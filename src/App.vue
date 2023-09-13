@@ -8,7 +8,7 @@ export default {
     };
   },
 
-  components: { AppContent, BaseSelect },
+  components: { AppContent },
   methods: {
     selectArchetype() {
       console.log("ok");
