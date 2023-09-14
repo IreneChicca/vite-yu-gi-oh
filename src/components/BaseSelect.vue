@@ -1,7 +1,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      selectedType: "",
+    };
   },
   emits: ["selected-new-archetype"],
 
@@ -17,12 +19,13 @@ export default {
         >Seleziona Archetipo</label
       >
       <select
-        @change="$emit('selected-new-archetype')"
+        @change="$emit('selected-new-archetype', selectedType)"
         class="form-select"
         aria-label="Default select example"
+        v-model="selectedType"
       >
-        <option selected>Select ...</option>
-        <option value="1" v-for="(type, i) in arch">{{ type }}</option>
+        <option selected value="">Select ...</option>
+        <option :value="type" v-for="(type, i) in arch">{{ type }}</option>
       </select>
     </div>
   </div>

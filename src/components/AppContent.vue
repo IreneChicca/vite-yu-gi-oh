@@ -32,6 +32,15 @@ export default {
           }
         });
     },
+
+    filterCards(term) {
+      axios
+        .get("https://db.ygoprodeck.com/api/v7/cardinfo.php?&archetype=" + term)
+        .then((resp) => {
+          console.log(resp);
+          this.cards = resp.data.data;
+        });
+    },
   },
 
   components: { Card, BaseSelect },
@@ -44,7 +53,11 @@ export default {
 </script>
 <template>
   <div class="container p-4">
-    <BaseSelect :arch="this.archetypes" class="w-25" />
+    <BaseSelect
+      :arch="archetypes"
+      @selected-new-archetype="filterCards"
+      class="w-25"
+    />
   </div>
 
   <div class="content p-5">
